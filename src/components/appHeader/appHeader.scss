@@ -11,9 +11,7 @@
     font-size: 28px;
     line-height: 37px;
 
-    span {
-      color: $main-color;
-    }
+   
   }
 
   &__menu {
@@ -25,11 +23,7 @@
       line-height: 32px;
       gap: 8px;
 
-      li {
-        &:hover {
-          color: $main-color;
-        }
-      }
+     
     }
   }
 }

@@ -1,32 +1,38 @@
-import { useState } from "react";
-import AppHeader from "../appHeader/AppHeader";
+import { lazy, Suspense } from "react";
+
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";	
 
-// Page
 
-import SingleComic from "../singleComic/SingleComic";
+import AppHeader from "../appHeader/AppHeader";
+
+const MainPage = lazy(() => import("../../pages/MainPage"));
+const ComicsPage = lazy(() => import("../../pages/ComicsPage"));
+const SingleComicPage = lazy(() => import("../../pages/SingleComicPage"));
+const Page404 = lazy(() => import("../../pages/404"));
+
+
+
 
 
 
 export default function App () {
 
-  const [selectedChar, setSelectedChar] = useState(null);
-
-  const onCharSelected = id => setSelectedChar(id);
-  
 
   return (
     <div className="app">
     <BrowserRouter >
-      <Routes>
-      <AppHeader />     
-          <Route exact path="/">
-          </Route>
-        <Route exact path="/comics/">
-        
-        </Route>
-      </Routes>
+    <AppHeader /> 
+      <main>
+        <Suspense fallback={<h1>Loading</h1>}>
+          <Routes>
+              <Route path="/" element={<MainPage />} />
+              <Route path="/comics/" element={<ComicsPage /> } />
+              <Route path="/comics/:id" element={<SingleComicPage />} />
+              <Route path="*" element={<Page404 />} />
+          </Routes>
+        </Suspense>
+      </main>
     </BrowserRouter>
     </div>
   );

@@ -1,9 +1,9 @@
 import React from 'react'
 
-import ComicsList from "../comicsList/ComicsList";
-import AppBanner from "../appBanner/AppBanner";
+import ComicsList from "../components/comicsList/ComicsList"
+import AppBanner from "../components/appBanner/AppBanner";
 
-function ComicsPage() {
+export default  function ComicsPage() {
   return (
     <>
           <AppBanner />	
@@ -12,4 +12,4 @@ function ComicsPage() {
   )
 }
 
-export default ComicsPage
+

@@ -18,10 +18,10 @@ const { loading, error, getCharacter, clearError} =  useMarvelService();
     updateChar();
   }, []);
 
-  useEffect(() => {
-   const timerID = setInterval(updateChar, 3000);
-      return () => clearInterval(timerID);
-  }, [char]);	
+  // useEffect(() => {
+  //  const timerID = setInterval(updateChar, 3000);
+  //     return () => clearInterval(timerID);
+  // }, [char]);	
  
   const updateChar = () => {
     clearError();

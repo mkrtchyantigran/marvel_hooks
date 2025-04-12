@@ -79,3 +79,27 @@ main {
   justify-content: center;
   margin: 0 auto;
 }
+
+.page404 {
+  min-height: 50vh;
+  text-align: center;
+
+  h1 {
+    margin-bottom: 16px;
+    margin-top: 25vh;
+    
+    span {
+      color: $main-color;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #5d5d5d;
+    }
+
+    a { 
+      color: $link;
+      font-weight: bold;
+    }
+  }
+}

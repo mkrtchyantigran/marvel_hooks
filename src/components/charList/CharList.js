@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useDeferredValue } from "react";
+
 import Spinner from "../spinner/Spinner";
 import Error from "../error/Error";
 import useMarvelService from "../../services/MarvelService";
@@ -11,12 +12,7 @@ export default function CharList({onCharSelected}) {
   const [offset, setOffset] = useState(0);
   const [charEnded, setCharEnded] = useState(false);
 
-  const deferredValue = useDeferredValue();
 
-
-    const beching = () => {  
-      
-    }
 
   const {loading, error, getAllCharacters} = useMarvelService();
 
@@ -29,13 +25,15 @@ export default function CharList({onCharSelected}) {
       getAllCharacters(offset).then(onCharListLoaded)
   }
 
-  const onCharListLoaded = (newCharList) => {  
+  const onCharListLoaded = async (newCharList) => {  
+    const {logger, testLog} = await import("./test");
+    logger();
+    testLog();
     let ended = false;
 
     if( newCharList.length < 9) ended= true
     
     setCharList(() => [...charList, ...newCharList])
-    
     setOnRequestLoading(false);
     setOffset(offset => offset + 9);
     setCharEnded(ended)
@@ -56,6 +54,8 @@ export default function CharList({onCharSelected}) {
       if (thumbnail === "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg") {
         imgStyle = { "objectFit": "contain" };
       }
+
+  
 
       return (
         <li
