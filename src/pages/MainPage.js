@@ -3,7 +3,8 @@ import { useState } from "react";
 import RandomChar from "../components/randomChar/RandomChar";
 import CharList from "../components/charList/CharList";
 import CharInfo from "../components/charInfo/CharInfo";
-import SingleCharacterPage from "./singleCharacter";
+import SingleCharacterLayout from "./Layouts/SingleCharacterLayout/singleCharacterLayout";
+import CharSearchForm from "../components/charSearchForm/CharSearchForm";
 
 import decoration from "../resources/img/vision.png";
 
@@ -25,11 +26,16 @@ export default function MainPage() {
                 <ErrorBoundary>
                     <CharList onCharSelected={onCharSelected} />
                 </ErrorBoundary>
+                <div>
+                    <ErrorBoundary>
+                        <CharInfo charId={selectedChar} />
+                    </ErrorBoundary>
+                    <ErrorBoundary>
+                        <CharSearchForm />
+                    </ErrorBoundary>
+                </div>
                 <ErrorBoundary>
-                    <CharInfo charId={selectedChar} />
-                </ErrorBoundary>
-                <ErrorBoundary>
-                    <SingleCharacterPage  />
+                    <SingleCharacterLayout  />
                 </ErrorBoundary>
             </div>
             
